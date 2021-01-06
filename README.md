@@ -75,7 +75,30 @@ After all the Runs AutomL gave voting ensemble model as best model with accuracy
   The Model Resgister codes are available in Jupyter Notebooks.<br>
   ![AutomLModelRegistercode](automlmodelregister.PNG)<br>
  ## Deployment <br>
-  Now both models are tested we choose automl model to be deployed as it gave better accuarcy compared to HyperDrive Model.<br>
+  Now both models are tested we choose automl model to be deployed as it gave better accuarcy compared to HyperDrive Model.<br> Before Deploying the model we need to pack all the dependencies into conda environment file whcih are included in the repository. Once we pack the dependencies a docker conatiner is built and pushed to Azure Container isntance. We need to consume the ACI instance using a rest Endpoint. The endpoint deployed will be seen in endpoints section of the Azure Machine learning studio. Before deploying an endpoint we need to define scoring script which defines the entrypoint to the deployment whcih is given in repository.<br>
+ We need to define inference config and endpoint config which are in jupyter Notebook of Automl.<br>
+ Once the end point is deployed and shwoing healthy its ready to cosnume<br>
+ ![Endpointinportal](Endpointdeployed.PNG)
+ ![EndpointHealthy](endpointhealthy.PNG)<br>
+ This shows the Endpoint is successfully deployed and is healthy.Now we can consume the endpoint using scoring URL genereated after deployment.<br>
+ The Endpoint is consumed using endpoint.py where we use requests library for cosnuming the endpoint.<br>
+ The sample input to the endpoint is as below<br>
+ ![SampleDatatoendpoint](endpointsampledata.PNG)<br>
+ Here we are testing two datapoints and we are expecting two outputs. This can be seen in next image<br>
+ ![Endpointesting](endpointtesting.PNG)<br>
+ In the same way we can test the endpoint on multiple Data points using sample data from the given dataset.<br>
+ We convert the sample dataframe into json and pass the json to service endpoint.<br>
+ ![Sample DataFrame](endpointtestting1.PNG)<br>
+ This shows the endpoint is functioning successfully.
+ ## Video Casting Explaining the Process
+ [https://youtu.be/lzueNMlqs0w](Youtubelink)<br>
+ ## Future Enhancements <BR>
+ The model can be converted to ONNX format and deploy on Edge devices.<br>
+ Applciation insights can be enabled.<br>
+ 
+ 
+ 
+ 
   
  
   
